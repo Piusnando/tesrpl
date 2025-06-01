@@ -15,6 +15,8 @@ import org.neracaku.neracaku.services.TransactionService;
 
 import java.io.File;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -57,6 +59,7 @@ public class AddEditTransactionDialogController {
     public interface TransactionDialogHandler {
         void onSave();
     }
+
     private TransactionDialogHandler dialogHandler;
 
     public void setDialogHandler(TransactionDialogHandler handler) {
@@ -71,7 +74,8 @@ public class AddEditTransactionDialogController {
         typeChoiceBox.setItems(FXCollections.observableArrayList("Pemasukan", "Pengeluaran"));
         typeChoiceBox.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldVal, newVal) -> {
-                    if (!isViewMode) loadCategoriesByType(newVal); // Jangan reload jika view mode & kategori sudah diset
+                    if (!isViewMode)
+                        loadCategoriesByType(newVal); // Jangan reload jika view mode & kategori sudah diset
                 }
         );
 
@@ -300,17 +304,40 @@ public class AddEditTransactionDialogController {
         }
 
         hideError();
-        if (typeChoiceBox.getValue() == null) { showError("Jenis transaksi harus dipilih."); return; }
-        if (datePicker.getValue() == null) { showError("Tanggal transaksi harus dipilih."); return; }
-        if (categoryComboBox.getValue() == null) { showError("Kategori harus dipilih."); return; }
-        if (amountField.getText().trim().isEmpty()) { showError("Jumlah tidak boleh kosong."); return; }
+
+        if (typeChoiceBox.getValue() == null) {
+            showError("Jenis transaksi harus dipilih.");
+            return;
+        }
+        System.out.println("dae: " + datePicker.getValue());
+        if (datePicker.getValue() == null) {
+            showError("Tanggal transaksi harus dipilih.");
+            return;
+        }
+        if (validateDate(String.valueOf(datePicker.getValue()))) {
+            showError("Apakah kamu berasal dari masa depan? :D.");
+            return;
+        }
+
+        if (categoryComboBox.getValue() == null) {
+            showError("Kategori harus dipilih.");
+            return;
+        }
+        if (amountField.getText().trim().isEmpty()) {
+            showError("Jumlah tidak boleh kosong.");
+            return;
+        }
 
         double amount;
         try {
             amount = Double.parseDouble(amountField.getText().trim().replace(",", "")); // Hapus koma jika ada
-            if (amount <= 0) { showError("Jumlah harus lebih besar dari nol."); return; }
+            if (amount <= 0) {
+                showError("Jumlah harus lebih besar dari nol.");
+                return;
+            }
         } catch (NumberFormatException e) {
-            showError("Format jumlah tidak valid."); return;
+            showError("Format jumlah tidak valid.");
+            return;
         }
 
         LocalDate date = datePicker.getValue();
@@ -373,5 +400,18 @@ public class AddEditTransactionDialogController {
         errorLabelDialog.setText("");
         errorLabelDialog.setVisible(false);
         errorLabelDialog.setManaged(false);
+    }
+
+    private boolean validateDate(String date) {
+        try {
+            LocalDate inputDate = LocalDate.parse(date);
+            LocalDate max =  LocalDate.now();
+
+            return inputDate.isAfter(max);
+        } catch (DateTimeParseException e) {
+            System.out.println("Format tanggal tidak valid. Harus yyyy-MM-dd.");
+        }
+
+        return false;
     }
 }

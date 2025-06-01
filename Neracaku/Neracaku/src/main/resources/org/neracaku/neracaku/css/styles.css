@@ -13,17 +13,20 @@
     -fx-text-fill: rgb(251, 251, 251); /* --foreground */
     -fx-padding: 0 0 5px 0;
 }
+
 .subtitle-label {
     -fx-font-size: 14px;
     -fx-text-fill: rgb(181, 181, 181); /* --muted-foreground */
     -fx-padding: 0 0 25px 0;
 }
+
 .form-label {
     -fx-font-size: 13px;
     -fx-font-weight: 500;
     -fx-text-fill: rgb(251, 251, 251); /* --foreground */
     -fx-padding: 0 0 2px 0;
 }
+
 .error-label {
     -fx-text-fill: rgb(248, 113, 113); /* --destructive */
     -fx-font-size: 13px;
@@ -33,7 +36,8 @@
 /* === INPUT FIELDS (TextField, PasswordField, TextArea, DatePicker) === */
 .input-field {
     -fx-background-color: rgba(255, 255, 255, 0.15); /* --input */
-    -fx-text-fill: rgb(251, 251, 251); /* --foreground */
+    /*-fx-text-fill: rgb(251, 251, 251); !* --foreground *!*/
+    -fx-text-fill: #000000;
     -fx-border-color: rgba(255, 255, 255, 0.1); /* --border */
     -fx-border-width: 1px;
     -fx-border-radius: 8px; /* --radius: 0.5rem (misal 8px) */
@@ -42,6 +46,7 @@
     -fx-prompt-text-fill: rgb(181, 181, 181); /* --muted-foreground */
     -fx-pref-height: 38px; /* Default untuk TextField/PasswordField */
 }
+
 .input-field:focused {
     -fx-border-color: rgb(142, 142, 142); /* --ring */
     -fx-effect: dropshadow(gaussian, rgba(142, 142, 142, 0.5), 5, 0.1, 0, 0);
@@ -52,24 +57,89 @@
     -fx-wrap-text: true;
     /* Tinggi diatur FXML atau default (prefRowCount) */
 }
+
 .text-area.input-field .content { /* Area konten di dalam TextArea */
     -fx-background-color: rgba(255, 255, 255, 0.15); /* --input */
 }
 
 /* DatePicker */
-.date-picker.input-field { -fx-padding: 0; /* Padding dihandle oleh text-field internal dan arrow-button */ }
-.date-picker.input-field .text-field { -fx-background-color: transparent; -fx-text-fill: rgb(251, 251, 251); -fx-prompt-text-fill: rgb(181, 181, 181); -fx-padding: 8px 12px; -fx-border-color: transparent; -fx-font-size: 14px; -fx-pref-height: 36px; }
-.date-picker.input-field > .arrow-button { -fx-background-color: rgba(255, 255, 255, 0.2); -fx-background-radius: 0 7px 7px 0; -fx-padding: 7px 10px; } /* Radius disesuaikan dengan 8px */
-.date-picker.input-field > .arrow-button > .arrow { -fx-background-color: rgb(251, 251, 251); -fx-pref-height: 10px; -fx-pref-width: 10px; }
-.date-picker-popup { -fx-background-color: rgb(69, 69, 69); -fx-border-color: rgb(95, 95, 95); -fx-border-width: 1px; } /* --secondary, --accent */
-.date-picker-popup .month-year-pane { -fx-background-color: rgb(52, 52, 52); } /* --card atau --sidebar */
-.date-picker-popup .month-year-pane .label { -fx-text-fill: rgb(251, 251, 251); }
-.date-picker-popup .spinner .button .left-arrow, .date-picker-popup .spinner .button .right-arrow { -fx-background-color: rgb(181, 181, 181); }
-.date-picker-popup .day-cell { -fx-text-fill: rgb(235, 235, 235); -fx-background-color: transparent; }
-.date-picker-popup .day-cell:hover { -fx-background-color: rgb(95, 95, 95); -fx-text-fill: rgb(251, 251, 251); } /* --accent */
-.date-picker-popup .day-cell.selected { -fx-background-color: rgb(235, 235, 255); -fx-text-fill: rgb(52, 52, 52); } /* --primary, --primary-foreground */
-.date-picker-popup .day-cell.today { -fx-border-color: rgb(142, 142, 142); -fx-border-width: 1px; } /* --ring */
-.date-picker-popup .week-number-cell { -fx-text-fill: rgb(181, 181, 181); }
+.date-picker.input-field {
+    -fx-padding: 0; /* Padding dihandle oleh text-field internal dan arrow-button */
+}
+
+.date-picker.input-field .text-field {
+    -fx-background-color: transparent;
+    /*-fx-text-fill: rgb(251, 251, 251);*/
+    -fx-text-fill: #000000;
+    -fx-prompt-text-fill: rgb(181, 181, 181);
+    -fx-padding: 8px 12px;
+    -fx-border-color: transparent;
+    -fx-font-size: 14px;
+    -fx-pref-height: 36px;
+}
+
+.date-picker.input-field > .arrow-button {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 0 7px 7px 0;
+    -fx-padding: 7px 10px;
+}
+
+/* Radius disesuaikan dengan 8px */
+.date-picker.input-field > .arrow-button > .arrow {
+    -fx-background-color: rgb(251, 251, 251);
+    -fx-pref-height: 10px;
+    -fx-pref-width: 10px;
+}
+
+.date-picker-popup {
+    -fx-background-color: rgb(69, 69, 69);
+    -fx-border-color: rgb(95, 95, 95);
+    -fx-border-width: 1px;
+}
+
+/* --secondary, --accent */
+.date-picker-popup .month-year-pane {
+    -fx-background-color: rgb(52, 52, 52);
+}
+
+/* --card atau --sidebar */
+.date-picker-popup .month-year-pane .label {
+    /*-fx-text-fill: rgb(251, 251, 251);*/
+    -fx-text-fill: #000000;
+}
+
+.date-picker-popup .spinner .button .left-arrow, .date-picker-popup .spinner .button .right-arrow {
+    -fx-background-color: rgb(181, 181, 181);
+}
+
+.date-picker-popup .day-cell {
+    /*-fx-text-fill: rgb(235, 235, 235);*/
+    -fx-text-fill: #000000;
+    -fx-background-color: transparent;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: rgb(95, 95, 95);
+    -fx-text-fill: rgb(251, 251, 251);
+}
+
+/* --accent */
+.date-picker-popup .day-cell.selected {
+    -fx-background-color: rgb(235, 235, 255);
+    /*-fx-text-fill: rgb(52, 52, 52);*/
+    -fx-text-fill: red;
+}
+
+/* --primary, --primary-foreground */
+.date-picker-popup .day-cell.today {
+    -fx-border-color: rgb(142, 142, 142);
+    -fx-border-width: 1px;
+}
+
+/* --ring */
+.date-picker-popup .week-number-cell {
+    -fx-text-fill: rgb(181, 181, 181);
+}
 
 
 /* === CHOICEBOX & COMBOBOX (Besar & Kecil) === */
@@ -82,6 +152,7 @@
     -fx-font-size: 14px;
     -fx-padding: 0; /* Padding dihandle oleh list-cell/label internal */
 }
+
 .choice-box-custom > .label, /* Teks item terpilih di ChoiceBox */
 .combo-box-custom > .list-cell /* Teks item terpilih di ComboBox */
 {
@@ -93,22 +164,32 @@
     -fx-background-insets: 0; /* Hapus insets agar background tidak aneh */
     -fx-cell-size: 36px; /* Sesuaikan dengan pref-height dikurangi border */
 }
-.choice-box-custom:focused, .combo-box-custom:focused { -fx-border-color: rgb(142, 142, 142); /* --ring */ }
-.choice-box-custom > .open-button > .arrow, .combo-box-custom > .arrow-button > .arrow { -fx-background-color: rgb(251, 251, 251); -fx-padding: 5px; -fx-shape: "M 0 0 L 4 4 L 8 0 Z"; }
+
+.choice-box-custom:focused, .combo-box-custom:focused {
+    -fx-border-color: rgb(142, 142, 142); /* --ring */
+}
+
+.choice-box-custom > .open-button > .arrow, .combo-box-custom > .arrow-button > .arrow {
+    -fx-background-color: rgb(251, 251, 251);
+    -fx-padding: 5px;
+    -fx-shape: "M 0 0 L 4 4 L 8 0 Z";
+}
 
 /* Dropdown list (popup) */
 .choice-box-custom .context-menu, .combo-box-popup .list-view {
     -fx-background-color: rgb(69, 69, 69); /* --secondary atau --muted */
-    -fx-border-color: rgb(95, 95, 95);    /* --accent */
+    -fx-border-color: rgb(95, 95, 95); /* --accent */
     -fx-border-width: 1px;
     -fx-background-insets: 0;
 }
+
 /* Item di dalam dropdown list */
 .choice-box-custom .menu-item .label, .combo-box-popup .list-view .list-cell {
     -fx-background-color: transparent;
     -fx-padding: 8px 12px;
     -fx-text-fill: rgb(251, 251, 251); /* --foreground */
 }
+
 /* Item di dropdown saat hover atau terpilih */
 .choice-box-custom .menu-item:focused, .choice-box-custom .menu-item:hover,
 .combo-box-popup .list-view .list-cell:hover,
@@ -116,8 +197,11 @@
     -fx-background-color: rgb(95, 95, 95); /* --accent */
     -fx-text-fill: rgb(251, 251, 251); /* --accent-foreground */
 }
+
 /* Teks item terpilih di dropdown */
-.combo-box-popup .list-view .list-cell:filled:selected .label { -fx-text-fill: rgb(251, 251, 251); }
+.combo-box-popup .list-view .list-cell:filled:selected .label {
+    -fx-text-fill: rgb(251, 251, 251);
+}
 
 /* Versi Kecil untuk Filter */
 .choice-box-custom-small, .combo-box-custom-small {
@@ -129,6 +213,7 @@
     -fx-font-size: 13px;
     -fx-padding: 0;
 }
+
 .choice-box-custom-small > .label,
 .combo-box-custom-small > .list-cell {
     -fx-text-fill: rgb(251, 251, 251) !important; /* --foreground */
@@ -139,139 +224,505 @@
     -fx-background-insets: 0;
     -fx-cell-size: 32px;
 }
-.choice-box-custom-small > .open-button > .arrow, .combo-box-custom-small > .arrow-button > .arrow { -fx-background-color: rgb(251, 251, 251); -fx-padding: 4px; }
-.choice-box-custom-small .context-menu, .combo-box-popup.combo-box-custom-small .list-view { -fx-background-color: rgb(69, 69, 69); -fx-border-color: rgb(95, 95, 95); }
-.choice-box-custom-small .menu-item .label, .combo-box-popup.combo-box-custom-small .list-view .list-cell { -fx-padding: 6px 10px; -fx-text-fill: rgb(251, 251, 251); -fx-background-color: transparent; }
+
+.choice-box-custom-small > .open-button > .arrow, .combo-box-custom-small > .arrow-button > .arrow {
+    -fx-background-color: rgb(251, 251, 251);
+    -fx-padding: 4px;
+}
+
+.choice-box-custom-small .context-menu, .combo-box-popup.combo-box-custom-small .list-view {
+    -fx-background-color: rgb(69, 69, 69);
+    -fx-border-color: rgb(95, 95, 95);
+}
+
+.choice-box-custom-small .menu-item .label, .combo-box-popup.combo-box-custom-small .list-view .list-cell {
+    -fx-padding: 6px 10px;
+    -fx-text-fill: rgb(251, 251, 251);
+    -fx-background-color: transparent;
+}
+
 .choice-box-custom-small .menu-item:focused, .choice-box-custom-small .menu-item:hover,
 .combo-box-popup.combo-box-custom-small .list-view .list-cell:hover,
-.combo-box-popup.combo-box-custom-small .list-view .list-cell:filled:selected { -fx-background-color: rgb(95, 95, 95); }
-.combo-box-popup.combo-box-custom-small .list-view .list-cell:filled:selected .label { -fx-text-fill: rgb(251, 251, 251); }
+.combo-box-popup.combo-box-custom-small .list-view .list-cell:filled:selected {
+    -fx-background-color: rgb(95, 95, 95);
+}
+
+.combo-box-popup.combo-box-custom-small .list-view .list-cell:filled:selected .label {
+    -fx-text-fill: rgb(251, 251, 251);
+}
 
 
 /* === TOMBOL UMUM (Lanjutan) === */
-.button-primary { -fx-background-color: rgb(235, 235, 235); -fx-text-fill: rgb(52, 52, 52); -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 8px; -fx-padding: 10px 15px; -fx-cursor: hand; -fx-pref-height: 40px; }
-.button-primary:hover { -fx-background-color: rgb(220, 220, 220); } .button-primary:pressed { -fx-background-color: rgb(205, 205, 205); }
-.button-primary .ikonli-font-icon { -fx-icon-color: rgb(52, 52, 52); -fx-icon-size: 14px; }
-.button-secondary { -fx-background-color: rgb(69, 69, 69); -fx-text-fill: rgb(251, 251, 251); -fx-font-size: 14px; -fx-font-weight: 500; -fx-border-radius: 8px; -fx-padding: 10px 15px; -fx-cursor: hand; -fx-border-color: rgb(95, 95, 95); -fx-border-width: 1px; -fx-pref-height: 40px; }
-.button-secondary:hover { -fx-background-color: rgb(82, 82, 82); } .button-secondary:pressed { -fx-background-color: rgb(95, 95, 95); }
-.button-link { -fx-background-color: transparent; -fx-text-fill: rgb(235, 235, 235); -fx-font-size: 13px; -fx-padding: 5px; -fx-border-color: transparent; -fx-underline: true; -fx-cursor: hand; }
-.button-link:hover { -fx-text-fill: rgb(205, 205, 205); }
+.button-primary {
+    -fx-background-color: rgb(235, 235, 235);
+    -fx-text-fill: rgb(52, 52, 52);
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px 15px;
+    -fx-cursor: hand;
+    -fx-pref-height: 40px;
+}
+
+.button-primary:hover {
+    -fx-background-color: rgb(220, 220, 220);
+}
+
+.button-primary:pressed {
+    -fx-background-color: rgb(205, 205, 205);
+}
+
+.button-primary .ikonli-font-icon {
+    -fx-icon-color: rgb(52, 52, 52);
+    -fx-icon-size: 14px;
+}
+
+.button-secondary {
+    -fx-background-color: rgb(69, 69, 69);
+    -fx-text-fill: rgb(251, 251, 251);
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px 15px;
+    -fx-cursor: hand;
+    -fx-border-color: rgb(95, 95, 95);
+    -fx-border-width: 1px;
+    -fx-pref-height: 40px;
+}
+
+.button-secondary:hover {
+    -fx-background-color: rgb(82, 82, 82);
+}
+
+.button-secondary:pressed {
+    -fx-background-color: rgb(95, 95, 95);
+}
+
+.button-link {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgb(235, 235, 235);
+    -fx-font-size: 13px;
+    -fx-padding: 5px;
+    -fx-border-color: transparent;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.button-link:hover {
+    -fx-text-fill: rgb(205, 205, 205);
+}
 
 /* === STYLING SIDEBAR === */
-.sidebar { -fx-background-color: rgb(52, 52, 52); -fx-padding: 15px 10px; } /* --sidebar */
-.sidebar-logo-text { -fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: rgb(251, 251, 251); -fx-padding: 0 0 15px 2px; } /* --sidebar-foreground */
-.sidebar-quick-create-button { -fx-background-color: rgb(129, 140, 248); -fx-text-fill: rgb(251, 251, 251); -fx-font-weight: 500; -fx-alignment: center-left; -fx-padding: 8px 12px; -fx-background-radius: 8px; -fx-border-radius: 8px; -fx-graphic-text-gap: 8px; -fx-cursor: hand; -fx-pref-height: 38px; } /* --sidebar-primary, --sidebar-primary-foreground */
-.sidebar-quick-create-button:hover { -fx-background-color: rgb(110, 120, 230); } /* Sedikit lebih gelap */
-.sidebar-quick-create-button .ikonli-font-icon { -fx-icon-color: rgb(251, 251, 251); -fx-icon-size: 16px; }
-.sidebar-scroll-pane { -fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 15px 0 0 0; }
-.sidebar-scroll-pane .viewport { -fx-background-color: transparent; }
-.sidebar-button { -fx-background-color: transparent; -fx-text-fill: rgb(200, 200, 200); -fx-font-size: 14px; -fx-alignment: center-left; -fx-padding: 8px 12px; -fx-background-radius: 8px; -fx-border-radius: 8px; -fx-graphic-text-gap: 10px; -fx-cursor: hand; -fx-pref-height: 36px; }
-.sidebar-button:hover { -fx-background-color: rgb(69, 69, 69); -fx-text-fill: rgb(251, 251, 251); } /* --sidebar-accent, --sidebar-accent-foreground */
-.sidebar-button.active { -fx-background-color: rgb(82, 82, 82); -fx-text-fill: rgb(251, 251, 251); -fx-font-weight: 500; } /* Sedikit lebih terang dari hover */
-.sidebar-button .ikonli-font-icon { -fx-icon-size: 16px; -fx-icon-color: rgb(200, 200, 200); }
-.sidebar-button:hover .ikonli-font-icon, .sidebar-button.active .ikonli-font-icon { -fx-icon-color: rgb(251, 251, 251); }
-.sidebar-user-info { -fx-padding: 15px 2px 0px 2px; -fx-border-color: rgba(255, 255, 255, 0.1) transparent transparent transparent; -fx-border-width: 1px 0 0 0; -fx-alignment: center-left; } /* --sidebar-border */
-.sidebar-username { -fx-font-size: 14px; -fx-font-weight: 500; -fx-text-fill: rgb(251, 251, 251); } /* --sidebar-foreground */
-.sidebar-user-role { -fx-font-size: 12px; -fx-text-fill: rgb(181, 181, 181); } /* --muted-foreground */
+.sidebar {
+    -fx-background-color: rgb(52, 52, 52);
+    -fx-padding: 15px 10px;
+}
+
+/* --sidebar */
+.sidebar-logo-text {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(251, 251, 251);
+    -fx-padding: 0 0 15px 2px;
+}
+
+/* --sidebar-foreground */
+.sidebar-quick-create-button {
+    -fx-background-color: rgb(129, 140, 248);
+    -fx-text-fill: rgb(251, 251, 251);
+    -fx-font-weight: 500;
+    -fx-alignment: center-left;
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-graphic-text-gap: 8px;
+    -fx-cursor: hand;
+    -fx-pref-height: 38px;
+}
+
+/* --sidebar-primary, --sidebar-primary-foreground */
+.sidebar-quick-create-button:hover {
+    -fx-background-color: rgb(110, 120, 230);
+}
+
+/* Sedikit lebih gelap */
+.sidebar-quick-create-button .ikonli-font-icon {
+    -fx-icon-color: rgb(251, 251, 251);
+    -fx-icon-size: 16px;
+}
+
+.sidebar-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 15px 0 0 0;
+}
+
+.sidebar-scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgb(200, 200, 200);
+    -fx-font-size: 14px;
+    -fx-alignment: center-left;
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-graphic-text-gap: 10px;
+    -fx-cursor: hand;
+    -fx-pref-height: 36px;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: rgb(69, 69, 69);
+    -fx-text-fill: rgb(251, 251, 251);
+}
+
+/* --sidebar-accent, --sidebar-accent-foreground */
+.sidebar-button.active {
+    -fx-background-color: rgb(82, 82, 82);
+    -fx-text-fill: rgb(251, 251, 251);
+    -fx-font-weight: 500;
+}
+
+/* Sedikit lebih terang dari hover */
+.sidebar-button .ikonli-font-icon {
+    -fx-icon-size: 16px;
+    -fx-icon-color: rgb(200, 200, 200);
+}
+
+.sidebar-button:hover .ikonli-font-icon, .sidebar-button.active .ikonli-font-icon {
+    -fx-icon-color: rgb(251, 251, 251);
+}
+
+.sidebar-user-info {
+    -fx-padding: 15px 2px 0px 2px;
+    -fx-border-color: rgba(255, 255, 255, 0.1) transparent transparent transparent;
+    -fx-border-width: 1px 0 0 0;
+    -fx-alignment: center-left;
+}
+
+/* --sidebar-border */
+.sidebar-username {
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-text-fill: rgb(251, 251, 251);
+}
+
+/* --sidebar-foreground */
+.sidebar-user-role {
+    -fx-font-size: 12px;
+    -fx-text-fill: rgb(181, 181, 181);
+}
+
+/* --muted-foreground */
 
 /* === AREA KONTEN TENGAH & KONTEN HALAMAN === */
-#contentAreaPane { -fx-background-color: rgb(37, 37, 37); } /* --background */
-.content-pane { /* Tidak ada style spesifik diperlukan jika sudah dihandle #contentAreaPane */ }
-.content-title { -fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: rgb(251, 251, 251); } /* --foreground */
-.content-text { -fx-font-size: 14px; -fx-text-fill: rgb(181, 181, 181); } /* --muted-foreground */
+#contentAreaPane {
+    -fx-background-color: rgb(37, 37, 37);
+}
+
+/* --background */
+.content-pane { /* Tidak ada style spesifik diperlukan jika sudah dihandle #contentAreaPane */
+}
+
+.content-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(251, 251, 251);
+}
+
+/* --foreground */
+.content-text {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgb(181, 181, 181);
+}
+
+/* --muted-foreground */
 
 /* === STYLING TABLEVIEW === */
-.table-view-custom { -fx-background-color: transparent; -fx-border-color: rgba(255, 255, 255, 0.1); -fx-border-width: 1px; -fx-border-radius: 8px; -fx-padding: 0; } /* --border */
-.table-view-custom .column-header-background { -fx-background-color: rgb(52, 52, 52); -fx-background-radius: 8px 8px 0 0; -fx-background-insets: 0; } /* --card atau --sidebar */
-.table-view-custom .column-header, .table-view-custom .filler { -fx-background-color: transparent; -fx-border-color: transparent transparent rgba(255, 255, 255, 0.1) transparent; -fx-border-width: 0 0 1px 0; -fx-padding: 10px 8px; -fx-size: 40px; } /* --border */
-.table-view-custom .column-header .label { -fx-text-fill: rgb(251, 251, 251); -fx-font-weight: bold; -fx-padding: 0 0 0 5px; -fx-alignment: CENTER_LEFT; } /* --foreground */
-.table-view-custom .column-header .arrow { -fx-background-color: rgb(251, 251, 251); } /* --foreground */
-.table-view-custom .table-row-cell { -fx-background-color: transparent; -fx-border-color: transparent transparent rgba(255, 255, 255, 0.1) transparent; -fx-border-width: 0 0 1px 0; -fx-padding: 0; } /* --border */
-.table-view-custom .table-row-cell:empty { -fx-background-color: transparent; -fx-border-width: 0; }
-.table-view-custom .table-row-cell:empty .table-cell { -fx-border-width: 0; }
-.table-view-custom .table-cell { -fx-text-fill: rgb(235, 235, 235); -fx-padding: 10px 12px; -fx-border-color: transparent; -fx-alignment: CENTER_LEFT; } /* Sedikit lebih redup dari --foreground */
-.table-view-custom .table-row-cell:selected { -fx-background-color: rgb(95, 95, 95); } /* --accent */
-.table-view-custom .table-row-cell:selected .table-cell, .table-view-custom .table-row-cell:selected .ikonli-font-icon { -fx-text-fill: rgb(251, 251, 251); } /* --accent-foreground */
-.button-icon-info, .button-icon-danger { -fx-background-color: transparent; -fx-padding: 5px; -fx-cursor: hand; }
-.button-icon-info .ikonli-font-icon { -fx-icon-color: rgb(129, 140, 248); -fx-icon-size: 16px; } /* --chart-1 */
-.button-icon-info:hover .ikonli-font-icon { -fx-icon-color: rgb(110, 120, 230); }
-.button-icon-danger .ikonli-font-icon { -fx-icon-color: rgb(248, 113, 113); -fx-icon-size: 16px; } /* --destructive */
-.button-icon-danger:hover .ikonli-font-icon { -fx-icon-color: rgb(220, 90, 90); }
+.table-view-custom {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-padding: 0;
+}
+
+/* --border */
+.table-view-custom .column-header-background {
+    -fx-background-color: rgb(52, 52, 52);
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-background-insets: 0;
+}
+
+/* --card atau --sidebar */
+.table-view-custom .column-header, .table-view-custom .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent rgba(255, 255, 255, 0.1) transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 10px 8px;
+    -fx-size: 40px;
+}
+
+/* --border */
+.table-view-custom .column-header .label {
+    -fx-text-fill: rgb(251, 251, 251);
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 0 5px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* --foreground */
+.table-view-custom .column-header .arrow {
+    -fx-background-color: rgb(251, 251, 251);
+}
+
+/* --foreground */
+.table-view-custom .table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent rgba(255, 255, 255, 0.1) transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 0;
+}
+
+/* --border */
+.table-view-custom .table-row-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.table-view-custom .table-row-cell:empty .table-cell {
+    -fx-border-width: 0;
+}
+
+.table-view-custom .table-cell {
+    -fx-text-fill: rgb(235, 235, 235);
+    -fx-padding: 10px 12px;
+    -fx-border-color: transparent;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Sedikit lebih redup dari --foreground */
+.table-view-custom .table-row-cell:selected {
+    -fx-background-color: rgb(95, 95, 95);
+}
+
+/* --accent */
+.table-view-custom .table-row-cell:selected .table-cell, .table-view-custom .table-row-cell:selected .ikonli-font-icon {
+    -fx-text-fill: rgb(251, 251, 251);
+}
+
+/* --accent-foreground */
+.button-icon-info, .button-icon-danger {
+    -fx-background-color: transparent;
+    -fx-padding: 5px;
+    -fx-cursor: hand;
+}
+
+.button-icon-info .ikonli-font-icon {
+    -fx-icon-color: rgb(129, 140, 248);
+    -fx-icon-size: 16px;
+}
+
+/* --chart-1 */
+.button-icon-info:hover .ikonli-font-icon {
+    -fx-icon-color: rgb(110, 120, 230);
+}
+
+.button-icon-danger .ikonli-font-icon {
+    -fx-icon-color: rgb(248, 113, 113);
+    -fx-icon-size: 16px;
+}
+
+/* --destructive */
+.button-icon-danger:hover .ikonli-font-icon {
+    -fx-icon-color: rgb(220, 90, 90);
+}
 
 /* === STYLING DIALOG === */
-.dialog-pane { -fx-background-color: rgb(52, 52, 52); } /* --card atau --sidebar */
-.dialog-title { -fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: rgb(251, 251, 251); -fx-padding: 0 0 15px 0; } /* --foreground */
+.dialog-pane {
+    -fx-background-color: rgb(52, 52, 52);
+}
+
+/* --card atau --sidebar */
+.dialog-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(251, 251, 251);
+    -fx-padding: 0 0 15px 0;
+}
+
+/* --foreground */
 
 /* === STYLING FILTER PANE & INPUT KECIL DI FILTER PANE === */
-.filter-pane { -fx-padding: 10px 0px; -fx-border-color: rgba(255, 255, 255, 0.1) transparent rgba(255, 255, 255, 0.1) transparent; -fx-border-width: 1px 0 1px 0; -fx-alignment: center-left; } /* --border */
-.input-field-small { -fx-background-color: rgba(255, 255, 255, 0.15); -fx-text-fill: rgb(251, 251, 251); -fx-border-color: rgba(255, 255, 255, 0.1); -fx-border-width: 1px; -fx-border-radius: 6px; -fx-padding: 5px 8px; -fx-font-size: 13px; -fx-prompt-text-fill: rgb(181, 181, 181); -fx-pref-height: 34px; } /* --input, --foreground, --border, --muted-foreground */
-.input-field-small:focused { -fx-border-color: rgb(142, 142, 142); -fx-effect: dropshadow(gaussian, rgba(142, 142, 142, 0.5), 4, 0.05, 0, 0); } /* --ring */
-.filter-pane Button { -fx-background-color: rgb(95, 95, 95); -fx-text-fill: rgb(251, 251, 251); -fx-font-size: 13px; -fx-border-radius: 6px; -fx-padding: 6px 10px; -fx-graphic-text-gap: 5px; -fx-pref-height: 34px; -fx-cursor: hand; } /* --accent, --accent-foreground */
-.filter-pane Button:hover { -fx-background-color: rgb(112, 112, 112); } /* --sidebar-ring atau lebih terang dari accent */
-.filter-pane Button .ikonli-font-icon { -fx-icon-size: 14px; -fx-icon-color: rgb(251, 251, 251); }
+.filter-pane {
+    -fx-padding: 10px 0px;
+    -fx-border-color: rgba(255, 255, 255, 0.1) transparent rgba(255, 255, 255, 0.1) transparent;
+    -fx-border-width: 1px 0 1px 0;
+    -fx-alignment: center-left;
+}
+
+/* --border */
+.input-field-small {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-text-fill: rgb(251, 251, 251);
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-padding: 5px 8px;
+    -fx-font-size: 13px;
+    -fx-prompt-text-fill: rgb(181, 181, 181);
+    -fx-pref-height: 34px;
+}
+
+/* --input, --foreground, --border, --muted-foreground */
+.input-field-small:focused {
+    -fx-border-color: rgb(142, 142, 142);
+    -fx-effect: dropshadow(gaussian, rgba(142, 142, 142, 0.5), 4, 0.05, 0, 0);
+}
+
+/* --ring */
+.filter-pane Button {
+    -fx-background-color: rgb(95, 95, 95);
+    -fx-text-fill: rgb(251, 251, 251);
+    -fx-font-size: 13px;
+    -fx-border-radius: 6px;
+    -fx-padding: 6px 10px;
+    -fx-graphic-text-gap: 5px;
+    -fx-pref-height: 34px;
+    -fx-cursor: hand;
+}
+
+/* --accent, --accent-foreground */
+.filter-pane Button:hover {
+    -fx-background-color: rgb(112, 112, 112);
+}
+
+/* --sidebar-ring atau lebih terang dari accent */
+.filter-pane Button .ikonli-font-icon {
+    -fx-icon-size: 14px;
+    -fx-icon-color: rgb(251, 251, 251);
+}
 
 /* === LABEL SUMMARY DI BAWAH TABEL === */
-.total-amount-label { -fx-font-size: 14px; -fx-text-fill: rgb(235, 235, 235); } /* Sedikit lebih redup dari --foreground */
-.total-amount-label-bold { -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: rgb(251, 251, 251); } /* --foreground */
+.total-amount-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgb(235, 235, 235);
+}
+
+/* Sedikit lebih redup dari --foreground */
+.total-amount-label-bold {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(251, 251, 251);
+}
+
+/* --foreground */
 
 /* === DASHBOARD STYLING === */
-.kpi-card { -fx-background-color: rgb(52, 52, 52); -fx-padding: 20px; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.2, 0, 2); } /* --card */
+.kpi-card {
+    -fx-background-color: rgb(52, 52, 52);
+    -fx-padding: 20px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.2, 0, 2);
+}
+
+/* --card */
 .kpi-card-icon {
     -fx-icon-literal: "fas-question-circle";
     -fx-icon-size: 18px;
     -fx-icon-color: rgb(181, 181, 181); /* --muted-foreground */
 }
+
 .kpi-card-icon-income {
     -fx-icon-literal: "fas-arrow-alt-circle-up";
     -fx-icon-size: 18px;
     -fx-icon-color: rgb(34, 197, 94); /* --chart-2 (Hijau) */
 }
+
 .kpi-card-icon-expense {
     -fx-icon-literal: "fas-arrow-alt-circle-down";
     -fx-icon-size: 18px;
     -fx-icon-color: rgb(248, 113, 113); /* --destructive (Merah) */
 }
-.kpi-card-title { -fx-font-size: 12px; -fx-text-fill: rgb(181, 181, 181); -fx-font-weight: 500; -fx-padding: 0 0 5px 0; } /* --muted-foreground */
-.kpi-card-value { -fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: rgb(251, 251, 251); -fx-padding: 0 0 3px 0; } /* --foreground */
+
+.kpi-card-title {
+    -fx-font-size: 12px;
+    -fx-text-fill: rgb(181, 181, 181);
+    -fx-font-weight: 500;
+    -fx-padding: 0 0 5px 0;
+}
+
+/* --muted-foreground */
+.kpi-card-value {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(251, 251, 251);
+    -fx-padding: 0 0 3px 0;
+}
+
+/* --foreground */
 .kpi-value-positive {
     -fx-text-fill: rgb(34, 197, 94); /* --chart-2 (Hijau) */
 }
+
 .kpi-value-negative {
     -fx-text-fill: rgb(248, 113, 113); /* --destructive (Merah) */
 }
+
 .kpi-value-neutral {
     -fx-text-fill: rgb(251, 251, 251); /* --foreground (Default) */
 }
+
 .kpi-card-comparison {
     -fx-font-size: 12px;
     -fx-padding: 3px 0 0 0; /* Sedikit jarak dari nilai utama */
     /* Warna akan diatur oleh controller (hijau/merah) */
 }
+
 .kpi-card-comparison-positive {
     -fx-text-fill: rgb(34, 197, 94); /* --chart-2 (Hijau) */
 }
+
 .kpi-card-comparison-negative {
     -fx-text-fill: rgb(248, 113, 113); /* --destructive (Merah) */
 }
+
 .kpi-card-comparison-neutral {
     -fx-text-fill: rgb(181, 181, 181); /* --muted-foreground */
 }
-.kpi-card-description { -fx-font-size: 12px; -fx-text-fill: rgb(142, 142, 142); } /* Warna muted yang lebih gelap */
+
+.kpi-card-description {
+    -fx-font-size: 12px;
+    -fx-text-fill: rgb(142, 142, 142);
+}
+
+/* Warna muted yang lebih gelap */
 .chart-container {
     -fx-background-color: rgb(52, 52, 52); /* --card atau --sidebar (Latar belakang VBox pembungkus chart) */
     -fx-padding: 15px;
     -fx-border-radius: 8px;
     -fx-background-radius: 8px;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.2, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.2, 0, 2);
 }
+
 .chart-title {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: rgb(251, 251, 251); /* --foreground */
     -fx-padding: 0 0 10px 0;
 }
+
 /* PieChart */
-.pie-chart .chart-pie-label-line { -fx-stroke: rgb(181, 181, 181); -fx-fill: rgb(181, 181, 181); } /* --ring */
+.pie-chart .chart-pie-label-line {
+    -fx-stroke: rgb(181, 181, 181);
+    -fx-fill: rgb(181, 181, 181);
+}
+
+/* --ring */
 /*.pie-chart .chart-pie-label { -fx-fill: rgb(180, 251, 251) !important; -fx-font-size: 11px; } !* --foreground *!*/
 /* Coba targetkan node Text di dalam .chart-pie-label jika ada */
 .pie-chart .chart-pie-label .text {
@@ -282,22 +733,57 @@
 .pie-chart > .chart-content > .data > .chart-pie-label {
     -fx-fill: rgb(251, 251, 251) !important;
 }
-.pie-chart .chart-legend { -fx-background-color: transparent; }
-.pie-chart .chart-legend-item .label { -fx-text-fill: rgb(235, 235, 235); -fx-font-size: 11px; } /* --primary */
-.pie-chart .chart-legend-item-symbol { -fx-background-radius: 8px; } /* --radius */
-.default-color0.chart-pie { -fx-pie-color: rgb(129, 140, 248); } /* --chart-1 */
-.default-color1.chart-pie { -fx-pie-color: rgb(34, 197, 94);  }  /* --chart-2 */
-.default-color2.chart-pie { -fx-pie-color: rgb(236, 72, 153); } /* --chart-3 */
-.default-color3.chart-pie { -fx-pie-color: rgb(168, 85, 247); } /* --chart-4 */
-.default-color4.chart-pie { -fx-pie-color: rgb(251, 146, 60); } /* --chart-5 */
+
+.pie-chart .chart-legend {
+    -fx-background-color: transparent;
+}
+
+.pie-chart .chart-legend-item .label {
+    -fx-text-fill: rgb(235, 235, 235);
+    -fx-font-size: 11px;
+}
+
+/* --primary */
+.pie-chart .chart-legend-item-symbol {
+    -fx-background-radius: 8px;
+}
+
+/* --radius */
+.default-color0.chart-pie {
+    -fx-pie-color: rgb(129, 140, 248);
+}
+
+/* --chart-1 */
+.default-color1.chart-pie {
+    -fx-pie-color: rgb(34, 197, 94);
+}
+
+/* --chart-2 */
+.default-color2.chart-pie {
+    -fx-pie-color: rgb(236, 72, 153);
+}
+
+/* --chart-3 */
+.default-color3.chart-pie {
+    -fx-pie-color: rgb(168, 85, 247);
+}
+
+/* --chart-4 */
+.default-color4.chart-pie {
+    -fx-pie-color: rgb(251, 146, 60);
+}
+
+/* --chart-5 */
 
 /* Styling untuk LineChart */
 .line-chart {
     -fx-padding: 5px; /* Sedikit padding di dalam chart itu sendiri */
 }
+
 .line-chart .chart-plot-background {
     -fx-background-color: transparent; /* Atau warna background chart yang lebih gelap sedikit */
 }
+
 .line-chart .axis {
     -fx-tick-label-fill: rgb(181, 181, 181); /* --muted-foreground (untuk label angka/bulan di sumbu) */
     -fx-tick-length: 5px; /* Panjang garis tick utama */
@@ -321,6 +807,7 @@
     -fx-stroke: rgba(255, 255, 255, 0.08); /* --border dengan opacity rendah (sangat tipis) */
     -fx-stroke-dash-array: 2 4; /* Membuat garis putus-putus (opsional) */
 }
+
 .line-chart .chart-horizontal-grid-lines {
     -fx-stroke: rgba(255, 255, 255, 0.08); /* --border dengan opacity rendah */
     -fx-stroke-dash-array: 2 4; /* Opsional */
@@ -331,6 +818,7 @@
     -fx-stroke: rgb(34, 197, 94); /* --chart-2 (Hijau) */
     -fx-stroke-width: 2px;
 }
+
 .default-color0.chart-line-symbol { /* Simbol titik pada garis */
     -fx-background-color: rgb(34, 197, 94), rgb(52, 52, 52); /* Warna titik, Warna background (card) */
     -fx-background-insets: 0, 2; /* Membuat efek outline */
@@ -343,20 +831,24 @@
     -fx-stroke: rgb(248, 113, 113); /* --destructive (Merah) */
     -fx-stroke-width: 2px;
 }
+
 .default-color1.chart-line-symbol {
     -fx-background-color: rgb(248, 113, 113), rgb(52, 52, 52); /* Warna titik, Warna background (card) */
     -fx-background-insets: 0, 2;
     -fx-background-radius: 5px;
     -fx-padding: 4px;
 }
+
 /* Legenda untuk LineChart */
 .line-chart .chart-legend {
     -fx-background-color: transparent;
 }
+
 .line-chart .chart-legend-item .label {
     -fx-text-fill: rgb(235, 235, 235); /* --primary (atau --foreground) */
     -fx-font-size: 11px;
 }
+
 .line-chart .chart-legend-item-symbol { /* Simbol warna di legenda */
     -fx-background-radius: 3px; /* Simbol lebih kotak untuk line chart */
     -fx-padding: 4px; /* Ukuran simbol */
