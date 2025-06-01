@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.scene.layout.Region?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="content-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.neracaku.neracaku.controllers.CategoryController">
+    <children>
+        <VBox spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label text="Manajemen Kategori" styleClass="content-title" />
+                        <Region HBox.hgrow="ALWAYS" /> <!-- Ini akan mendorong tombol ke kanan -->
+                        <Button fx:id="addCategoryButton" mnemonicParsing="false" onAction="#handleAddCategoryAction" styleClass="button-primary" text="Tambah Kategori">
+                            <graphic>
+                                <FontIcon iconLiteral="fas-plus" styleClass="button-primary-icon" />
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+
+                <!-- Kita akan menggunakan TableView untuk menampilkan kategori -->
+                <TableView fx:id="categoryTableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" styleClass="table-view-custom">
+                    <columns>
+                        <TableColumn fx:id="nameColumn" prefWidth="300.0" text="Nama Kategori" />
+                        <TableColumn fx:id="typeColumn" prefWidth="150.0" text="Tipe" />
+                        <TableColumn fx:id="actionsColumn" prefWidth="150.0" text="Aksi" style="-fx-alignment: CENTER;"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

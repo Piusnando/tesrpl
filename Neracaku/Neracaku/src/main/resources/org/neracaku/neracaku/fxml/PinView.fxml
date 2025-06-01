@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="rootPinPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="400.0" spacing="20.0" styleClass="root-pane" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.neracaku.neracaku.controllers.PinController">
+    <padding>
+        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+    </padding>
+    <children>
+        <Label fx:id="welcomeLabel" styleClass="title-label" text="Verifikasi PIN">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <Label styleClass="subtitle-label" text="Masukkan PIN 4 digit Anda untuk melanjutkan." />
+
+        <VBox spacing="10.0" alignment="CENTER" maxWidth="200"> <!-- Dibuat lebih sempit untuk PIN -->
+            <children>
+                <PasswordField fx:id="pinField" alignment="CENTER" promptText="----" styleClass="input-field" style="-fx-font-size: 20px; -fx-font-family: 'Lucida Console', Monaco, monospace;">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </PasswordField>
+                <!-- Anda bisa menambahkan validasi panjang PIN di controller -->
+            </children>
+        </VBox>
+
+        <Label fx:id="pinErrorLabel" styleClass="error-label" managed="false" visible="false" />
+
+        <Button fx:id="verifyPinButton" mnemonicParsing="false" onAction="#handleVerifyPinButtonAction" prefHeight="40.0" prefWidth="200.0" styleClass="button-primary" text="Verifikasi" />
+
+        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButtonAction" styleClass="button-link" text="Kembali ke Login">
+            <VBox.margin>
+                <Insets top="15.0" /> <!-- Atau nilai lain yang sesuai -->
+            </VBox.margin>
+        </Button>
+
+    </children>
+</VBox>

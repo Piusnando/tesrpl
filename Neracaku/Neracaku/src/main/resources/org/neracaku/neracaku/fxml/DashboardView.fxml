@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<AnchorPane styleClass="content-pane" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.neracaku.neracaku.controllers.DashboardController">
+    <children>
+        <VBox spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <children>
+                <Label styleClass="content-title" text="Dashboard Ringkasan" />
+
+                <FlowPane hgap="20.0" vgap="20.0" prefWrapLength="800.0">
+                    <children>
+                        <!-- Kartu Saldo Saat Ini -->
+                        <VBox styleClass="kpi-card" prefWidth="250.0">
+                            <padding><Insets top="15" right="20" bottom="15" left="20" /></padding>
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <FontIcon iconLiteral="fas-wallet" styleClass="kpi-card-icon"/>
+                                <Label text="SALDO SAAT INI (12 Bln Terakhir)" styleClass="kpi-card-title" />
+                            </HBox>
+                            <Label fx:id="saldoLabel" styleClass="kpi-card-value" text="Rp 0,00" />
+                            <Label fx:id="saldoDescLabel" styleClass="kpi-card-description" text="Total pemasukan dikurangi pengeluaran." />
+                        </VBox>
+
+                        <!-- Kartu Pemasukan Bulan Ini -->
+                        <VBox styleClass="kpi-card" prefWidth="250.0">
+                            <padding><Insets top="15" right="20" bottom="15" left="20" /></padding>
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <FontIcon iconLiteral="fas-arrow-alt-circle-up" styleClass="kpi-card-icon-income"/>
+                                <Label text="PEMASUKAN BULAN INI" styleClass="kpi-card-title" />
+                            </HBox>
+                            <Label fx:id="pemasukanBulanIniLabel" styleClass="kpi-card-value" text="Rp 0,00" />
+                            <Label fx:id="pemasukanComparisonLabel" styleClass="kpi-card-comparison" text="" />
+                            <Label fx:id="pemasukanDescLabel" styleClass="kpi-card-description" text="Total pemasukan untuk [Bulan Tahun]" />
+                        </VBox>
+
+                        <!-- Kartu Pengeluaran Bulan Ini -->
+                        <VBox styleClass="kpi-card" prefWidth="250.0">
+                            <padding><Insets top="15" right="20" bottom="15" left="20" /></padding>
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <FontIcon iconLiteral="fas-arrow-alt-circle-down" styleClass="kpi-card-icon-expense"/>
+                                <Label text="PENGELUARAN BULAN INI" styleClass="kpi-card-title" />
+                            </HBox>
+                            <Label fx:id="pengeluaranBulanIniLabel" styleClass="kpi-card-value" text="Rp 0,00" />
+                            <Label fx:id="pengeluaranComparisonLabel" styleClass="kpi-card-comparison" text="" /> <!-- Label untuk perbandingan -->
+                            <Label fx:id="pengeluaranDescLabel" styleClass="kpi-card-description" text="Deskripsi Pengeluaran Awal" />
+                        </VBox>
+                    </children>
+                </FlowPane>
+
+                <!-- Area Grafik -->
+                <HBox spacing="20.0" VBox.vgrow="ALWAYS" alignment="TOP_CENTER" style="-fx-padding: 20px 0 0 0;">
+                    <children>
+                        <VBox HBox.hgrow="ALWAYS" styleClass="chart-container">
+                            <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+                            <Label text="Pengeluaran per Kategori (Bulan Ini)" styleClass="chart-title"/>
+                            <PieChart fx:id="categoryPieChart" title="" VBox.vgrow="ALWAYS" legendVisible="true" />
+                            <!-- title="" agar title default PieChart tidak muncul, kita pakai Label sendiri -->
+                        </VBox>
+                        <!-- Line Chart Tren Pemasukan vs Pengeluaran -->
+                        <VBox HBox.hgrow="ALWAYS" styleClass="chart-container" minWidth="300" prefWidth="400"> <!-- Beri min/prefWidth -->
+                            <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+                            <Label text="Tren Keuangan (6 Bulan Terakhir)" styleClass="chart-title"/>
+                            <LineChart fx:id="trendLineChart" VBox.vgrow="ALWAYS" legendVisible="true">
+                                <xAxis>
+                                    <CategoryAxis fx:id="trendChartXAxis" label="Bulan" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis fx:id="trendChartYAxis" label="Jumlah (Rp)" side="LEFT" />
+                                </yAxis>
+                            </LineChart>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

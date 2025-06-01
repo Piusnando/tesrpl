@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?> <!-- Jika menggunakan Ikonli -->
+
+<BorderPane fx:id="mainBorderPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.neracaku.neracaku.controllers.MainViewController">
+    <left>
+        <VBox fx:id="sidebarPane" prefWidth="260.0" styleClass="sidebar" spacing="5">
+            <padding>
+                <Insets top="15.0" right="10.0" bottom="15.0" left="10.0" />
+            </padding>
+            <children>
+                <!-- Header Sidebar -->
+                <HBox alignment="CENTER_LEFT" spacing="10" styleClass="sidebar-header" VBox.vgrow="NEVER">
+                    <padding><Insets bottom="15.0" /></padding>
+                    <!-- Ganti dengan ImageView untuk logo jika ada -->
+                    <Label text="Neracaku" styleClass="sidebar-logo-text" />
+                    <!-- <Button text="+" styleClass="sidebar-action-button" /> -->
+                    <!-- <FontIcon iconLiteral="fas-bell" styleClass="sidebar-action-icon" /> -->
+                </HBox>
+
+                <!-- Tombol Quick Create (Contoh) -->
+                <Button fx:id="quickCreateButton" text="Tambah Transaksi Cepat" styleClass="sidebar-quick-create-button" prefWidth="Infinity" onAction="#handleQuickCreateAction">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-plus-circle" styleClass="sidebar-button-icon"/>
+                    </graphic>
+                </Button>
+
+
+                <!-- Grup Menu Utama (dalam ScrollPane jika item banyak) -->
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="sidebar-scroll-pane" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets top="15.0" /> <!-- Tambah margin atas -->
+                    </VBox.margin>
+                    <content>
+                        <VBox spacing="5" styleClass="sidebar-menu-group">
+                            <children>
+                                <Button fx:id="dashboardButton" text="Dashboard" styleClass="sidebar-button" prefWidth="Infinity" onAction="#handleDashboardAction">
+                                    <graphic><FontIcon iconLiteral="fas-tachometer-alt" styleClass="sidebar-button-icon"/></graphic>
+                                </Button>
+                                <Button fx:id="transactionsButton" text="Transaksi" styleClass="sidebar-button" prefWidth="Infinity" onAction="#handleTransactionsAction">
+                                    <graphic><FontIcon iconLiteral="fas-exchange-alt" styleClass="sidebar-button-icon"/></graphic>
+                                </Button>
+                                <Button fx:id="categoriesButton" text="Kategori" styleClass="sidebar-button" prefWidth="Infinity" onAction="#handleCategoriesAction">
+                                    <graphic><FontIcon iconLiteral="fas-tags" styleClass="sidebar-button-icon"/></graphic>
+                                </Button>
+                                <Button fx:id="reportsButton" text="Laporan" styleClass="sidebar-button" prefWidth="Infinity" onAction="#handleReportsAction">
+                                    <graphic><FontIcon iconLiteral="fas-chart-pie" styleClass="sidebar-button-icon"/></graphic>
+                                </Button>
+                                <!-- Jika ada role admin -->
+                                <Button fx:id="adminUserMgmtButton" text="Manajemen User" styleClass="sidebar-button" prefWidth="Infinity" onAction="#handleAdminUserMgmtAction" visible="false" managed="false">
+                                    <graphic><FontIcon iconLiteral="fas-users-cog" styleClass="sidebar-button-icon"/></graphic>
+                                </Button>
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+                <!-- Footer Sidebar -->
+                <VBox spacing="5" styleClass="sidebar-footer" VBox.vgrow="NEVER">
+                    <padding><Insets top="15.0" /></padding>
+                    <!-- Tombol Logout -->
+                    <Button fx:id="logoutButton" text="Logout" styleClass="sidebar-button" prefWidth="Infinity" onAction="#handleLogoutAction">
+                        <graphic><FontIcon iconLiteral="fas-sign-out-alt" styleClass="sidebar-button-icon"/></graphic>
+                    </Button>
+
+                    <!-- Info Pengguna -->
+                    <HBox alignment="CENTER_LEFT" spacing="10" styleClass="sidebar-user-info" >
+                        <padding><Insets top="10.0" /></padding>
+                        <!-- <ImageView fx:id="userAvatarImageView" fitHeight="32" fitWidth="32" /> -->
+                        <VBox>
+                            <Label fx:id="usernameLabel" styleClass="sidebar-username" text="Nama Pengguna"/>
+                            <Label fx:id="userRoleLabel" styleClass="sidebar-user-role" text="Role"/>
+                        </VBox>
+                        <!-- <Button styleClass="sidebar-options-button">
+                            <graphic><FontIcon iconLiteral="fas-ellipsis-v"/></graphic>
+                        </Button> -->
+                    </HBox>
+                </VBox>
+
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <AnchorPane fx:id="contentAreaPane"> <!-- Warna background area konten (slate-950) -->
+            <!-- Konten dari FXML lain akan dimuat di sini -->
+            <Label text="Selamat Datang di Neracaku!" style="-fx-text-fill: #fafafa; -fx-font-size: 24px;" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="50"/>
+        </AnchorPane>
+    </center>
+</BorderPane>

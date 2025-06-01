@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?> <!-- Pastikan ini sudah diimport -->
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefWidth="500.0" prefHeight="600.0" styleClass="dialog-pane" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.neracaku.neracaku.controllers.AddEditTransactionDialogController">
+    <children>
+        <VBox spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <Label fx:id="dialogTitleLabel" styleClass="dialog-title" text="Tambah Transaksi Baru">
+                <font>
+                    <Font name="System Bold" size="18.0" />
+                </font>
+            </Label>
+
+            <GridPane hgap="10.0" vgap="10.0" VBox.vgrow="ALWAYS"> <!-- Kurangi vgap sedikit -->
+                <columnConstraints>
+                    <ColumnConstraints hgrow="NEVER" minWidth="100.0" prefWidth="120.0" />
+                    <ColumnConstraints hgrow="ALWAYS" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" /> <!-- Jenis -->
+                    <RowConstraints minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" /> <!-- Tanggal -->
+                    <RowConstraints minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" /> <!-- Kategori -->
+                    <RowConstraints minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" /> <!-- Jumlah -->
+                    <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" /> <!-- Deskripsi -->
+                    <RowConstraints minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" /> <!-- Nota -->
+                    <RowConstraints minHeight="10.0" prefHeight="160.0" vgrow="SOMETIMES" /> <!-- ImageView (beri ruang lebih) -->
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" /> <!-- Error -->
+                </rowConstraints>
+                <children>
+                    <Label styleClass="form-label" text="Jenis Transaksi:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <ChoiceBox fx:id="typeChoiceBox" maxWidth="Infinity" styleClass="choice-box-custom" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.hgrow="ALWAYS"/>
+
+                    <Label styleClass="form-label" text="Tanggal:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <DatePicker fx:id="datePicker" maxWidth="Infinity" styleClass="input-field" promptText="Pilih tanggal" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.hgrow="ALWAYS"/>
+
+                    <Label styleClass="form-label" text="Kategori:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <ComboBox fx:id="categoryComboBox" maxWidth="Infinity" promptText="Pilih kategori" styleClass="choice-box-custom" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.hgrow="ALWAYS"/>
+
+                    <Label styleClass="form-label" text="Jumlah (Rp):" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <TextField fx:id="amountField" promptText="cth: 50000" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.hgrow="ALWAYS"/>
+
+                    <Label styleClass="form-label" text="Deskripsi:" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                        <GridPane.margin><Insets top="5.0" /></GridPane.margin>
+                    </Label>
+                    <TextArea fx:id="descriptionArea" prefRowCount="3" promptText="Catatan tambahan (opsional)" styleClass="input-field" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.hgrow="ALWAYS" prefHeight="70.0"/>
+
+                    <Label styleClass="form-label" text="Nota (Gambar):" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                    <HBox spacing="10" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.hgrow="ALWAYS">
+                        <Button fx:id="chooseImageButton" onAction="#handleChooseImageAction" text="Pilih File" styleClass="button-secondary">
+                            <graphic><FontIcon iconLiteral="fas-paperclip" /></graphic>
+                        </Button>
+                        <Label fx:id="imagePathLabel" text="(Tidak ada file dipilih)" style="-fx-text-fill: #94a3b8;" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+
+                    <ImageView fx:id="receiptImageView" fitHeight="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6" visible="false" managed="false">
+                        <!-- fitWidth dihapus agar menyesuaikan dengan tinggi dan rasio -->
+                        <GridPane.margin><Insets top="5.0"/></GridPane.margin>
+                    </ImageView>
+
+                    <Label fx:id="errorLabelDialog" styleClass="error-label" managed="false" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="7" wrapText="true"/>
+                </children>
+            </GridPane>
+
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                <VBox.margin><Insets top="10.0" /></VBox.margin>
+                <Button fx:id="saveButton" onAction="#handleSaveAction" styleClass="button-primary" text="Simpan" />
+                <Button fx:id="cancelButton" onAction="#handleCancelAction" styleClass="button-secondary" text="Batal" />
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>

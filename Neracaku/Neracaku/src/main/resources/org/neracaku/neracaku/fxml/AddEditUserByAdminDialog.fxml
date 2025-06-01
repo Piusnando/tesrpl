@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?> <!-- Pastikan ini diimport jika menggunakan ALWAYS -->
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefWidth="450.0" prefHeight="400.0" styleClass="dialog-pane" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.neracaku.neracaku.controllers.AddEditUserByAdminDialogController">
+    <children>
+        <VBox spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <Label fx:id="dialogTitleUserLabel" styleClass="dialog-title" text="Tambah Pengguna Baru (Admin)">
+                <font>
+                    <Font name="System Bold" size="18.0" />
+                </font>
+            </Label>
+
+            <GridPane hgap="10.0" vgap="12.0"> <!-- Sesuaikan vgap jika perlu -->
+                <columnConstraints>
+                    <ColumnConstraints hgrow="NEVER" minWidth="100.0" prefWidth="130.0" /> <!-- Kolom Label -->
+                    <ColumnConstraints hgrow="ALWAYS" /> <!-- Kolom Input akan melebar -->
+                </columnConstraints>
+                <!-- RowConstraints bisa dihilangkan agar tinggi menyesuaikan konten, atau set prefHeight -->
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" /> <!-- Untuk error label -->
+                </rowConstraints>
+
+                <children>
+                    <Label text="Username:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="usernameAdminField" promptText="Min. 5 karakter" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="0" maxWidth="Infinity" GridPane.hgrow="ALWAYS"/>
+
+                    <Label text="Password:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <PasswordField fx:id="passwordAdminField" promptText="Min. 6 karakter (kosongkan jika tidak diubah)" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="1" maxWidth="Infinity" GridPane.hgrow="ALWAYS"/>
+
+                    <Label text="PIN (4 atau 6 digit):" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <PasswordField fx:id="pinAdminField" promptText="---- atau ------ (kosongkan jika tidak diubah)" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="2" maxWidth="Infinity" GridPane.hgrow="ALWAYS"/>
+
+                    <Label text="Role Pengguna:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <ChoiceBox fx:id="roleAdminChoiceBox" maxWidth="Infinity" styleClass="choice-box-custom" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.hgrow="ALWAYS"/>
+
+                    <Label fx:id="errorUserDialogLabel" styleClass="error-label" managed="false" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" wrapText="true"/>
+                </children>
+            </GridPane>
+
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                <VBox.margin>
+                    <Insets top="20.0" />
+                </VBox.margin>
+                <Button fx:id="saveUserAdminButton" onAction="#handleSaveUserAdminAction" styleClass="button-primary" text="Simpan" />
+                <Button fx:id="cancelUserAdminButton" onAction="#handleCancelUserAdminAction" styleClass="button-secondary" text="Batal" />
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>
